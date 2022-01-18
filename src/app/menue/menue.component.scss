@@ -1,0 +1,20 @@
+.menue {
+  background-color: black;
+  overflow: hidden;
+  padding-left: 24px;
+}
+
+.headline {
+  position: absolute;
+  top: 0;
+  color: aliceblue;
+  font-size: 16px;
+
+}
+
+.menue-image {
+  width: 100vw;
+  height: 20vh;
+  object-fit: cover;
+  opacity: 0.3;
+}
