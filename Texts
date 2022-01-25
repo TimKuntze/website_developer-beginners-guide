@@ -1,0 +1,201 @@
+<h1>Allgemein</h1>:
+<b>Continous Integration (CI)</b>
+<p>z.B. TravisUI (nur bei github)<br>
+Beispiel: Auf Github gepushter Code wird durch Travis UI automatisch auf den FTP Server geladen und der alte Code gelöscht.
+Dadurch braucht man z.B. kein Filezilla mehr. Es kann auch Code vor dem übertragen auf den Server automatisch getestet werden.
+Andere Repositories: Bitbucket und Gitlab. Bei Bitbucket wird dann statt TravisUI bspw. Jenkins verwendet. Bei Gitlab das eigene CI Tool.</p>
+
+<b>Hackerrank</b>
+<p>Technical assessment and remote interview solution for hiring developers. Kann also möglicherweise in Bewerbungsprozessen verwendet werden.
+</p>
+
+<b>Cookies</b>
+<p>Cookies sind kleine Textdateien, die im Webbrowser abgespeichert werden und gewisse Information über den User speichern. Dadurch kann der Webseitenbetreiber z.B. wissen wie oft du schon auf der Seite warst etc.
+   User müssen aus Rechtsgründen darauf hingewiesen werden, dass Cookies verwendet werden (DSGVO). Dies wird per JavaScript eingebunden.
+   Man kann sich von Anbietern einfach eine fertige “Cookiebar” holen (meistens dann auch rechtlich sicher) (z.B. Cookiebot) und diesen in den HTML Code der Seite einbetten.</p>
+
+<b>Deployment</b>
+<p>Software Deployment (dt. Softwareverteilung) bezeichnet eine meist halbautomatisch oder automatisch ablaufende Installation oder Aktualisierung von Betriebssystemen und Anwendungssoftware auf PCs und Servern. </p>
+
+<b>FTP-Server</b>
+<p>Vereinfacht gesagt eine Art Dropbox. Oder ein normaler Ordner, der auf einem Server abliegt.</p>
+
+<b>HTTP Methoden</b>
+<p>"Hypertext Transfer Protocol"
+
+   Übertragen/Transferieren von HTML-Dateien.
+
+   4 verschiedene Methoden:
+
+   HTTP-GET-REQUEST: User ruft Internetseite auf. Sprich, möchte das HTML bekommen und bekommt es zurück. Gilt auch nicht nur für reinen HTML, sondern bspw. auch für JSON/Array.
+
+   HTTP-POST-REQUEST:  Z.B. zum Hinzufügen eines Items im Warenkorb. Es wird entsprechend neben dem <head> mit der URL auch ein <body> mitgesendet, der bspw. ein JSON enthält. Dies wird dann mit dem Backend verbunden und formuliert eine SQL-Abfrage draus und fügt es dem Warenkorb hinzu.
+
+   HTTP-PUT-REQUEST: Veränderung eines Items z.B. im Warenkorb. Sendet aktualisiertes JSON mit den aktualisierten Eigenschaften.
+
+   HTTP-DELETE-REQUEST: Entfernung eines solchen Items.
+
+   Bei allen Requests bekommt User eine Nummer zurück (Antwort von Server):
+
+   200: OK
+   202: Accepted
+   404: Not found</p>
+
+<b>Load Balancing</b>
+<p>Vereinfacht: URL geht zum DNS-Server und dann zum FTP Server auf dem HTML, CSS, JS etc. abliegt.
+
+   Bei Load Balancing: Wenn mehrere FTP Server existieren z.B. bei sehr großen Seiten (bspw. Amazon). Hier wird wenn vom DNS Server IP Adresse zum User zurückkommt nicht direkt auf den FTP Server zugegriffen sondern ein Load Balancer dazwischengeschaltet. Mit diesem Load Balancer werden User dann zufällig auf die verschiedenen Server verteilt, damit keine Überlastung aufgtritt. </p>
+
+<b>Login und Session IDs</b>
+<p>Login Request wird per Post-Methode ausgeführt (siehe HTTP Methoden)
+
+   Im Login Request werden Login-Daten zum Server geschickt und mit der SQL Datenbank abgeglichen.
+
+   Zurück kommt dann bspw. Ein JSON mit "true" oder "false" und eine Session ID (zufällig generiert). Die Session ID wird beim User im localstorage gespeichert und auf dem Server in der Datenbank.
+
+   Danach dann Get Request (inkl. Session ID) von User (wird mit Datenbank verglichen). D.h. so wird sichergestellt, dass nur User mit den korrekten LoginDaten und SessionID entprechende Daten (z.B. Warenkorb) einsehen kann.
+
+
+   Sicherheit von Sessions
+
+   Hacker würde bspw. Get Anfrage schicken an URL inkl. Zufällig generierter SessionID (kombiniert diese solange bis richtige SessionID generiert wird).
+
+   Wie kann man das verhindern?
+
+   	• Session ID sind lang und haben ca. 20 Zeichen (nahezu unmöglich richtige Session zu erraten)
+   	• Session ID werden automatisch nach einer gewissen Zeit geändert (z.B. nur 15 min gültig)
+   	• Webbrowser Fingerprint wird auch in der Datenbank gespeichert
+   	• 2 Faktor Authentifizierung (zweites Gerät nötig z.B. SMS auf Handy)
+</p>
+
+<b>Robots.txt</b>
+<p>Seiten oder Unterseiten die nicht indexiert werden sollen können per robots.txt ausgeschlossen werden
+
+   User-agent: Definiert für welchen Browser die Website angezeigt werden kann (andere Beispiele für User Agents sind E-Mail-Programme, Newsreader oder IRC-Clients (Instant-Messenger-Client)). “*” = gilt für alle (Hinweis: * gilt in den meisten Programmiersprachen für alles). Schreibt man bspw. “safari”, kann die die Website nicht mit Safari Browser angezeigt werden oder scheibt man “google”, darf kein Google-Roboter auf die Seite zugreifen.
+
+   Bei größeren robots.txt macht es zur Übersichtlichkeit Sinn Kommentare einzufügen. Diese beginnen immer mit einem # (-> z.B. #Ausschluss von Unterseiten) und werden nicht von Maschinen gelesen</p>
+
+<b>Server/DNS-Server</b>
+<p>Fast alle Webseiten sind mit HTML aufgebaut. Wo bekommen wir den HTML-Code einer Seite her, damit dieser von unserem Browser dargestellt werden kann? -> Server (kann letztendlich auch nur ein simpler Computer sein). Zur korrekten Identifikation des Servers (mit entsprechender IP-Adresse/Kennnummer) wird DNS-Server angesteuert (eine Art Telefonbuch für IP-Adressen). Anders erklärt: DNS/Nameserver sind Server, die einer URL die richtige IP zuweisen können oder einer IP die richtige URL. DNS steht dabei für “Domain Name System“. Jede Website bzw. jeder Server ist über eine bestimmte IP im Internet zu erreichen. -> Browser frägt erst DNS-Server und geht dann in Richtung Server auf dem Seite/Code gehostet wird.</p>
+
+<b>SQL / NoSQL</b>
+<p>SQL
+
+   "Structured Query Language"
+
+   SQL ist eine Datenbank in Tabellenform zum Speichern von Daten. Z.B. Kundendaten
+
+   z.B.
+
+   Alle Kunden aus Deutschland:
+
+   SELECT * FROM Customers WHERE Country="Germany"
+
+
+
+   NoSQL
+
+   Datenbank für verschachteltere JSONs. Z.B. Datenbank Tool für NoSQL: MongoDB, Redis</p>
+
+<b>Unix Timestamp</b>
+<p>Die Unixzeit ist eine Zeitdefinition, die für das Betriebssystem Unix entwickelt und als POSIX-Standard festgelegt wurde. Die Unixzeit zählt die vergangenen (Milli-)Sekunden seit Donnerstag, dem 1. Januar 1970, 00:00 Uhr UTC. Das Startdatum wird auch als The Epoch bezeichnet.
+
+   </p>
+
+
+<b>Was ist HTML (Hypermark Markup Language)? </b>
+
+ <p>  Textbasierte Auszeichnungssprache zur Strukturierung elektronischer Dokumente wie Texte mit Hyperlinks, Bildern und anderen Inhalten. HTML-Dokumente sind die Grundlage des World Wide Web und werden von Webbrowsern dargestellt.
+
+   Alle Webseiten bauen grundlegend mindestens auf HTML auf.
+
+
+   	• Im <body>-Bereich wird alles angezeigt was dargestellt werden soll (Text, Überschrift, Bilder etc.)
+   	• Standardmäßig wird dem <body> 8px Platz gegegeben (quasi ein voreingestellter CSS-Befehl “margin: 8px;” (Dieser kann im CSS entfernt werden indem man dort auf den body verweist (in diesem Fall ohne Punkt vor den Befehl) und margin auf 0px stellt -> body {margin: 0px;}
+   	• Zur Übersichtlichkeit und Optimierung (Ladezeiten) wird bei bei Webseiten der CSS Code im Normalfall ausgelagert. Dies geschieht per Verweis im html-Code auf das entsprechende Stylesheet per <link rel=”stylesheet” href=”style.css”>
+   	• Das gleiche gilt für den JavaScript-Teil. Dies geschieht im HTML <head> per <script src=”xx.js”></script>
+   	• Elementen kann man x-beliebig viele Klassen zuweisen. Z.B. <div class="text-justify text-grey"> -> einfach mit Leerzeichen trennen. In diesem Fall wird dem Container zugewiesen dass der Text im Block steht und grau ist (bzw. je nach CSS Eigenschaft)
+   Für Responsive folgendes in den <head> Bereich des htmls: <meta name="viewport" content="width=device-width, initial-scale=1.0"> -> dadurch werden alle festen Größen in Relation zum Ausgabegerät ausgespielt</p>
+
+<b>HTML Befehle </b>
+<p>
+	• .homepage_header (in diesem Fall wir definieren wir die Klasse (“class” z.B. aus <body> -> <img class “homepage header”...)  “homepage_header” und können die Eigenschaften des Bildes ändern
+	• .menue a (siehe oben allerdings werden in diesem Fall nur die Links “a” (HTML: <a>), also einzelne Teilelemente des Containers verändert
+	• .menue a:hover (siehe oben allerdings wird in diesem Fall nur Eigenschaften verändert wenn der Mauszeiger über den Link hovert)
+	• { = Start der CSS-Eigenschaften einer davor definierten <class>
+	• width: XX%; (mit ; werden Befehle in CSS beendet)
+	• height: XXpx;
+	• object-fit: cover; (weitere mögliche object-fit Befehle sind z.B. fill, contain, none, scale-down) (The CSS object-fit property is used to specify how an <img> or <video> should be resized to fit its container.)
+	• } = Ende der entsprechenden CSS-Eigenschaften
+	• background-color: #HEXXX;
+	• padding: XXpx; = Polsterung = Abstand nach innen
+	• padding-left: XXpx; / padding-right: XXpx; / padding-up: XXpx; -> Padding kann auch für einzelne genutzt werden (!important; hinter die Befehle setzen um CSS klarzumachen, welcher padding-Befehl Vorrang hat)
+	• position: absolute = Positionierung eines Elementes (eines Containers) (absoulte heisst das wir frei wählen können wo das Element letztendlich angezeigt wird)
+Folgende Werte sind möglich:
+static (Standardwert) Das Element verbleibt im Textfluss. top, bottom, left, right werden ignoriert.
+relative Das Element kann mit top, bottom, left, right verschoben werden; es bleibt aber eine Lücke im Textfluss.
+absolute: Das Element kann völlig unabhängig positioniert werden.
+fixed: starr am Viewport ausgerichtet
+sticky: Elemente behalten ihre Position im Elementfluss, bis sie das obere oder untere Seitenende erreichen und dort „kleben“ bleiben
+	• top: XXpx;  /   left: XXpx;    /    right: XXpx;     /bottom: XXpx;
+	• font-size: XXpx;
+	• rgb(255, 0, 0); = Farbangabe rot, grün, blau (0 bis 255) z.B. für Hintergrundfarbe
+	• rgba(255, 0, 0, 0.5); = Farbangabe + Transparenz (0 bis 1 -> halb transparent 0.5)
+	• margin: XXpx; = Spanne = Platz um Elemente (Abstand nach Außen) -> nicht zu verwechseln mit padding
+	• text-decoration: none; = Text verändern (mit anderen Befehlen kann man hier den Text unterstreichen, durchstreichen, mit welligen Linien unterlegen etc.)
+	• <iframe> </iframe> = zum Einbetten (z.B. von GoogleMaps)
+	• display: flex; = bestimmt wie Elemente (z.B. Container) angezeigt werden sollen (z.B. nebeneinander)
+	• justify-content: space-between; = Anordnung der Elemente = hier zum Beispiel werden z.B. 2 Container links und rechts dargestellt (der Leerraum befindet sich also zwischen diesen beiden)
+	• font-family: xx-Schriftart; = da es meistens für die gesamte Website gelten soll -> CSS-Bereich wo die Eigenschaften des gesamten <body> definiert wird
+	• scroll-behavior: smooth; = sollte für die ganze Seite gelten also nicht nur für den <header> oder <body>-Part -> daher um die ganze Seite anzusteueren -> CSS Befehl html {scroll-behavior: smooth;}
+	• allign-items: center; = hiermit können Elemente die flexibel angeordnet werden können (durch CSS-Befehl: display: flex;) ausgerichtet werden. In diesem Fall mittig (x- und y-Achse)
+	• transition: all 0.5s ease-in; = kleine Animation mit der man bspw. einen Hover-Effekt darstellen kann. In diesem Fall wird auf alle Elemente des Containers (all) ein 0.5 Sekunden langer ease-in Effekt dargestellt.
+	• flex-direction: column; hier kann eingestellt werden ob die Anordnung z.B. horizontal oder vertikal sein soll (allign-items wird für horizontal und justify-content für vertikal verwendet)
+	• z-index: 40; = Damit werden Ebenenen definiert, so dass überlagerte Container z.B. nach vorne geholt werden können (eine höhere Zahl heisst näher am Betrachter). Reihenfolge in html ist auch eine Möglichkeit
+	• max-width: 300px; = definiert wie breit ein Container oder ein Element maximal werden darf (in diesem Fall 300px)
+	• @media(max-width:800px) {} -> Mit diesem if-Befehl (wenn das Medium kleinergleich 800px ist (aktueller Standardwert 800px-1000px), werden anderen CSS Befehle ausgespielt) werden Seiten responsive gemacht
+	• @keyframes -> Mit diesem CSS Befehl kann man kleine Animationen wie z.B. FadeIns etc. einstellen. Diese müssen dann aber ggfalls noch mit JS verbunden werden, indem man im CSS erstmal die Animation einer Klasse zuweist. Und diese CSS Klasse dann dem JS-Code zuweist. Im Beispiel unten wird so ein Element (z.B. Text) langsam sichtbar (Animation von 1s mit easin-in-out).
+</p>
+
+<b>Angular Console Befehle</b>
+<p>Erstellen einer App in lokaler Umgebung:
+
+   ng serve name oder ng s name
+
+   Erstellen einer Component:
+
+   ng generate component name oder ng g c name
+
+   Hinzufügen von Angular Material zu einem Projekt
+
+   ng add @angular/material
+
+   ng build <project> [options]ng b <project> [options]</p>
+
+<b>Testing</b>
+<p>Unit Test Angular
+
+   Test ob einzelne Funktionen korrekt sind
+
+   Integration Test
+
+   Test von Komponenten
+
+   E2E (End to End)
+</p>
+
+<b>If-Abfragen Angular im HTML</b>
+<p>In Angular können if-Abfragen auch direkt in das HTML gesetzt werden mit dem Befehl "*ngIf"</p>
+
+<b>OnInit</b>
+<p>Wenn wie in JS Funktionen beim Laden der Seite geladen werden sollen (siehe JS "onload") muss in Angular in der "app.component.ts" in der Zeile export class AppComponent "implements OnInit" eingefügt werden. Diese init Funktion wird dann im JS-Teil innerhalb des "export"-Teils ausgeführt. </p>
+
+<b>Verweisen von Funktionen und Variablen in Funktionen in Angular</b>
+<p>Anders als in JS wird Angular auf eine Funktion verwiesen indem man "this." an die zu verweisende Funktion und Variable vorhängt. </p>
+
+<b>Public/private router</b>
+<p>Public gilt für alle und private router nur für die betroffene Component</p>
+
+<b>CSS in Angular im HTML Code</b>
+<p>per[ngStyle]</p>
+
